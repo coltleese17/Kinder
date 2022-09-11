@@ -11,11 +11,12 @@ def index():
     if request.method == "POST":
         inputPhrase = request.form["input"]
         response = openai.Completion.create(
-            model="text-davinci-002",
-            prompt=generate_prompt(inputPhrase),
-            temperature=0.35,
-            stop="\n"
-        )
+                                            model="text-davinci-002",
+                                            prompt=generate_prompt(inputPhrase),
+                                            max_tokens=50,
+                                            temperature=0.35,
+                                            stop="\n"
+                                            )
         print(response)
         return redirect(url_for("index", result=response.choices[0].text))
 
