@@ -15,7 +15,7 @@ def index():
                                             prompt=generate_prompt(inputPhrase),
                                             max_tokens=50,
                                             temperature=0.35,
-                                            stop="\n"
+                                            stop="Input"
                                             )
         print(response)
         return redirect(url_for("index", result=response.choices[0].text))
